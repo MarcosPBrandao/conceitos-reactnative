@@ -9,7 +9,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-// api
+// api android emulador
 import api from './services/api';
 
 export default function App() {
