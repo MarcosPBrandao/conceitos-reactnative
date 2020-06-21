@@ -20,24 +20,24 @@ export default function App() {
     })
   }, []);
   async function handleLikeRepository(id) {
-    try {
-       const response = await api.post(`repositories/${id}/like`);
-       const filter = repositories.filter(repository => repository.id !== id)
-       setRepositories([...filter,response.data])
-      } catch (error) {
-        console.log('problema ao atualizar o like', error);
-      }       
-    // api.post(`repositories/${id}/like`).then((response) => {
-    //   const data = repositories.map((repository) => {
-    //     if (repository.id === id) {
-    //       return {
-    //         ...repository,
-    //         likes: repository.likes + 1,
-    //       };
-    //     } else return repository;
-    //   });
-    //   setRepositories(data);
-    // });
+    // try {
+    //    const response = await api.post(`repositories/${id}/like`);
+    //    const filter = repositories.filter(repository => repository.id !== id)
+    //    setRepositories([...filter,response.data])
+    //   } catch (error) {
+    //     console.log('problema ao atualizar o like', error);
+    //   }       
+    api.post(`repositories/${id}/like`).then((response) => {
+      const data = repositories.map((repository) => {
+        if (repository.id === id) {
+          return {
+            ...repository,
+            likes: repository.likes + 1,
+          };
+        } else return repository;
+      });
+      setRepositories(data);
+    });
   }
 
   return (
